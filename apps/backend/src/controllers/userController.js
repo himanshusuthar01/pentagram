@@ -39,6 +39,8 @@ const signupController = async (req, res) => {
     const token = jwt.sign(payLoad, process.env.SECRET, { expiresIn: "6h" });
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
     return res.status(201).json({
       success: true,
@@ -77,6 +79,8 @@ const loginController = async (req, res) => {
     const token = jwt.sign(payLoad, process.env.SECRET, { expiresIn: "6h" });
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
     return res.status(201).json({
       success: true,
@@ -89,7 +93,11 @@ const loginController = async (req, res) => {
 };
 
 const logoutController = (req, res) => {
-  res.clearCookie("token", { httpOnly: true });
+  res.clearCookie("token", { 
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+  });
   return res
     .status(200)
     .json({ success: true, message: "Logged out successfully" });
