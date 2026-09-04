@@ -23,6 +23,12 @@ app.use("/api/posts", blogRoute);
 app.use("/api/posts/:postId/comments", commentRoute);
 app.use("/api/message", messageRoute);
 
+// Added aliases without '/api' prefix because the frontend is calling them directly
+app.use("/auth", userRoute);
+app.use("/posts", blogRoute);
+app.use("/posts/:postId/comments", commentRoute);
+app.use("/message", messageRoute);
+
 // Simple health check route
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Backend is running successfully!" });
