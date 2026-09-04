@@ -23,6 +23,11 @@ app.use("/api/posts", blogRoute);
 app.use("/api/posts/:postId/comments", commentRoute);
 app.use("/api/message", messageRoute);
 
+// Simple health check route
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Backend is running successfully!" });
+});
+
 const start = async () => {
   try {
     await connectDB();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+import Sidebar from './SideBar';
 
 const Layout = ({ children, defaultExpanded = true }) => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(defaultExpanded);
